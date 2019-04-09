@@ -1,0 +1,17 @@
+{
+  "extract"  : {"uri": "tests/test_data/recipes/recipes.json",
+                "clean": "True",
+                "temptable": "recipes"},
+  "transform": {"sql_path": "configs/transformation.sql",
+                "udfs_required":["tominutes"]},
+  "load"     : {"database": "hellofresh",
+                "tablename": "recipes",
+                "load_path": "user/hive/warehouse/hellofresh.db/recipes",
+                "partition_cols": {"difficulty": "string"}
+                },
+  "impala"     : {"impala_host": "localhost",
+                  "database": "hellofresh",
+                  "tablename": "recipes"
+                 }
+}
+
